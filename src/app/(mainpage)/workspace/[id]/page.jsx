@@ -1,7 +1,7 @@
 import { getWorkspaceByIdService } from "@/service/workspace-service";
 import { Star } from "lucide-react";
 
-const WorkspacePage = async ({ params,  }) => {
+const WorkspacePage = async ({ params}) => {
   const id = (await params).id; // Fix here, no need for await
   const data = await getWorkspaceByIdService(id);
 
