@@ -30,8 +30,8 @@ const WorkspacePage = async ({ params }) => {
 
       <div className="px-12 mt-5 grid grid-cols-3 gap-15">
         <InStarted id={id} />
-        {/* <InprogressComponent />
-        <FinishComponent /> */}
+        <InprogressComponent />
+        <FinishComponent />
       </div>
 
       {/* add task */}
