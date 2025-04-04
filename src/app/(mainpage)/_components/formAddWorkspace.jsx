@@ -42,15 +42,8 @@ const FormAddWorkspace = () => {
     }
   }, [state]);
   return (
-    <form className="space-y-6 bg-white" action={formAction}>
+    <form className="space-y-6 bg-white flex flex-col" action={formAction}>
       <div>
-        <Label
-          htmlFor="workspaceName"
-          className="text-light-steel-blue flex gap-2 items-start mb-2 text-base"
-        >
-          Workspace Name
-        </Label>
-
         <Input
           name="workspaceName"
           type="text"
@@ -65,9 +58,9 @@ const FormAddWorkspace = () => {
       </div>
       <Button
         type="submit"
-        className="text-base cursor-pointer bg-persian-green text-white py-2.5 rounded-lg w-full font-bold"
+        className="self-end text-base cursor-pointer text-blue-500 py-2.5 px-6 bg-white rounded-lg font-bold w-fit border border-blue-500"
       >
-        {isPending ? "Loading..." : "Add"}
+        {isPending ? "Loading..." : "Create"}
       </Button>
     </form>
   );

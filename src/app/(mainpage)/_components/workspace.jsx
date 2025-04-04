@@ -18,7 +18,6 @@ const Workspace = async () => {
     <div className="space-y-3 w-full">
       <div className="flex justify-between items-center px-8">
         <h2 className="font-semibold text-xl text-gray-500">Workspace</h2>
-
         <Dialog>
           <DialogTrigger asChild>
             <SquarePlus size={24} color="gray" />

@@ -1,7 +1,11 @@
 "use server";
 
-import { addWorkspaceService } from "@/service/workspace-service";
+import {
+  addWorkspaceService,
+  updateWorkspaceFavIdService,
+} from "@/service/workspace-service";
 import { AddWorkSpaceFomSchema, RegisterFomSchema } from "@/validation/rules";
+import { revalidateTag } from "next/cache";
 import { Bounce, toast } from "react-toastify";
 
 export const addWorkspaceAction = async (state, formData) => {
@@ -16,4 +20,14 @@ export const addWorkspaceAction = async (state, formData) => {
   }
   const data = await addWorkspaceService({ name });
   return data;
+};
+
+export const handleFavorite = async (id, isFavorite) => {
+  try {
+    const data = await updateWorkspaceFavIdService(id, !isFavorite);
+    revalidateTag("workspace");
+    return data;
+  } catch (error) {
+    console.error("Failed to update favorite:", error);
+  }
 };

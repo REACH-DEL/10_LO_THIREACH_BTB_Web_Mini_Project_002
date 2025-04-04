@@ -1,5 +1,6 @@
+import { randomColor } from "@/actions/randomColor";
 import { getAllWorkspaceService } from "@/service/workspace-service";
-import { Star } from "lucide-react";
+import { Ellipsis, Star } from "lucide-react";
 
 const Favarite = async () => {
   let datas = [];

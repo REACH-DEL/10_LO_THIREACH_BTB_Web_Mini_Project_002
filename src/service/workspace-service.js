@@ -34,6 +34,7 @@ export const getAllWorkspaceService = async () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      next: {tags: ["workspace"]}
     }
   );
   if (!res.ok) throw new Error("Failed to fetch");
@@ -49,7 +50,6 @@ export const getWorkspaceByIdService = async (id) => {
   const res = await fetch(`http://96.9.81.187:8080/api/v1/workspace/${id}`, {
     method: "GET",
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   });
@@ -63,14 +63,17 @@ export const updateWorkspaceFavIdService = async (id, isFavorit) => {
   console.log("Session:", session);
   const token = (await session?.token) || "";
 
-  const res = await fetch(`http://96.9.81.187:8080/api/v1/workspace/${id}/favorite?favorite=${isFavorit}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const res = await fetch(
+    `http://96.9.81.187:8080/api/v1/workspace/${id}/favorite?favorite=${isFavorit}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   if (!res.ok) throw new Error("Failed to fetch");
   const data = await res.json();
-  return data.payload;
+  return data;
 };
